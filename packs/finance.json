@@ -1,0 +1,10 @@
+{
+  "name": "finance",
+  "terms": {
+    "implied volatility": "IV",
+    "implied volatility rank": "IVR",
+    "days to expiration": "DTE",
+    "interest rate": "IR",
+    "credit risk": "CR"
+  }
+}
