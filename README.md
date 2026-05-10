@@ -1,8 +1,14 @@
 # brevity
 
-Brevity reduces LLM token cost by replacing verbose, repeated domain phrases with short, defined shorthand, and measures whether answer quality holds up.
+When does domain shorthand reduce LLM cost, and when does it hurt?
 
-**Status: early scaffold.** Translation and evaluation are not implemented, and no savings or quality results have been measured. Domains will be added as data files ("packs"), with no code changes.
+**Status: early scaffold.** The translator and evaluation are not yet implemented, and no savings or quality results have been measured. Domains will be added as data files ("packs"), with no code changes.
+
+See the [experiment pre-registration](docs/experiment.md) for hypotheses, comparison conditions, measurement methods, and reporting rules written before any runs.
+
+## Results
+
+No results yet.
 
 ## Development
 
