@@ -1,0 +1,226 @@
+{
+  "schema_version": 1,
+  "status": "draft_not_run",
+  "pack_path": "packs/finance.json",
+  "common_instruction": "Answer the task using the supplied facts where provided. Follow the requested response format. Use full domain phrases rather than shorthand codes in prose. Do not infer a trade recommendation.",
+  "legend": "IV = implied volatility\nIVR = implied volatility rank\nDTE = days to expiration\nIR = interest rate\nCR = credit risk",
+  "prompts": [
+    {
+      "id": "finance-01",
+      "category": "short",
+      "short_prompt": true,
+      "expected_replacements": 1,
+      "text": "In one sentence, define implied volatility.",
+      "expected_points": [
+        "Describes a measure of expected future variability inferred from option prices.",
+        "Does not present it as a prediction of price direction or as measured historical volatility."
+      ]
+    },
+    {
+      "id": "finance-02",
+      "category": "short",
+      "short_prompt": true,
+      "expected_replacements": 1,
+      "text": "How many calendar days to expiration remain from June 1 to June 11 of the same year, excluding June 1?",
+      "expected_points": [
+        "Reports 10 calendar days, without substituting trading days."
+      ]
+    },
+    {
+      "id": "finance-03",
+      "category": "short",
+      "short_prompt": true,
+      "expected_replacements": 1,
+      "text": "An account pays a simple annual interest rate of 4% on $1,000 for one year, with no fees. State the interest earned.",
+      "expected_points": [
+        "Reports $40 as the interest earned, not $1,040."
+      ]
+    },
+    {
+      "id": "finance-04",
+      "category": "short",
+      "short_prompt": true,
+      "expected_replacements": 1,
+      "text": "In one sentence, define credit risk.",
+      "expected_points": [
+        "Identifies potential loss from a borrower or counterparty failing to meet its obligations."
+      ]
+    },
+    {
+      "id": "finance-05",
+      "category": "short",
+      "short_prompt": true,
+      "expected_replacements": 1,
+      "text": "Using 100 * (current - minimum) / (maximum - minimum), calculate implied volatility rank for current 30%, minimum 10%, and maximum 50%.",
+      "expected_points": [
+        "Calculates 100 * (30 - 10) / (50 - 10) = 50 on the stated 0-to-100 scale."
+      ]
+    },
+    {
+      "id": "finance-06",
+      "category": "control_none",
+      "short_prompt": true,
+      "expected_replacements": 0,
+      "text": "Buy 10 shares at $20 each and sell them at $23 each. With no fees or taxes, what is the total profit?",
+      "expected_points": [
+        "Reports $30 profit, rather than the $230 sale proceeds."
+      ]
+    },
+    {
+      "id": "finance-07",
+      "category": "control_none",
+      "short_prompt": true,
+      "expected_replacements": 0,
+      "text": "A portfolio contains $100 in cash and $300 in bonds. What percentage of its total value is cash?",
+      "expected_points": [
+        "Uses the $400 total and reports a 25% cash allocation."
+      ]
+    },
+    {
+      "id": "finance-08",
+      "category": "control_none",
+      "short_prompt": false,
+      "expected_replacements": 0,
+      "text": "A bookkeeping note lists invoice A for $120, invoice B for $80, and invoice C for $200. Invoice A is unpaid and overdue, invoice B is paid, and invoice C is unpaid but not yet due. The client asks for the total unpaid balance and the total overdue balance separately. Calculate both balances using only these records, and do not assume that every unpaid invoice is overdue.",
+      "expected_points": [
+        "Reports $320 as the total unpaid balance from invoices A and C.",
+        "Reports $120 as the overdue balance from invoice A only."
+      ]
+    },
+    {
+      "id": "finance-09",
+      "category": "control_few",
+      "short_prompt": false,
+      "expected_replacements": 1,
+      "text": "A fictional lender defines credit risk categories solely by annual default probability: low below 1%, medium from 1% through 3%, and high above 3%. Borrower North has a probability of 0.8%, and borrower South has a probability of 3.2%. Both request the same loan amount and have identical stated fees. Under this policy, label each borrower. Do not infer that either loan must be approved or rejected, since the note supplies no approval policy.",
+      "expected_points": [
+        "Labels North low and South high using the supplied probability thresholds.",
+        "Does not infer approval or rejection from the categories alone."
+      ]
+    },
+    {
+      "id": "finance-10",
+      "category": "control_few",
+      "short_prompt": false,
+      "expected_replacements": 1,
+      "text": "A budget report starts with $500 of cash, records a $900 customer payment, and lists $250 of rent and $150 of wages as the only cash outflows. An unrelated attachment quotes an interest rate of 4%; no borrowing or interest payment occurs in this reporting period. Calculate ending cash using the listed inflows and outflows only. Explain whether the quoted percentage should be applied to this cash calculation.",
+      "expected_points": [
+        "Calculates ending cash as $500 + $900 - $250 - $150 = $1,000.",
+        "Does not apply the unrelated 4% quote to the cash balance."
+      ]
+    },
+    {
+      "id": "finance-11",
+      "category": "repeated",
+      "short_prompt": false,
+      "expected_replacements": 5,
+      "text": "Desk A reports implied volatility of 20%, desk B reports implied volatility of 35%, and desk C reports implied volatility of 25%. Rank the desks by implied volatility from highest to lowest, then give the highest-minus-lowest implied volatility difference in percentage points.",
+      "expected_points": [
+        "Orders the desks B, C, A from highest to lowest.",
+        "Reports a difference of 15 percentage points, not a 15% relative increase."
+      ]
+    },
+    {
+      "id": "finance-12",
+      "category": "repeated",
+      "short_prompt": false,
+      "expected_replacements": 5,
+      "text": "Desk A has implied volatility rank 15, desk B has implied volatility rank 80, and desk C has implied volatility rank 50. Rank the desks by implied volatility rank from highest to lowest and report the median implied volatility rank.",
+      "expected_points": [
+        "Orders the desks B, C, A from highest to lowest.",
+        "Reports 50 as the median of the three supplied values."
+      ]
+    },
+    {
+      "id": "finance-13",
+      "category": "repeated",
+      "short_prompt": false,
+      "expected_replacements": 5,
+      "text": "Contract A has days to expiration of 7, contract B has days to expiration of 30, and contract C has days to expiration of 14. Sort the contracts by days to expiration from smallest to largest and report the maximum-minus-minimum days to expiration gap.",
+      "expected_points": [
+        "Orders the contracts A, C, B from smallest to largest.",
+        "Reports a gap of 23 days."
+      ]
+    },
+    {
+      "id": "finance-14",
+      "category": "repeated",
+      "short_prompt": false,
+      "expected_replacements": 5,
+      "text": "Loan A has a simple annual interest rate of 4%, loan B has a simple annual interest rate of 6%, and loan C has a simple annual interest rate of 5%. Each has $1,000 principal outstanding for exactly one year and no fees. Identify the loan with the lowest interest rate and calculate the annual interest difference between the highest and lowest interest rate loans.",
+      "expected_points": [
+        "Identifies loan A as the lowest-rate loan.",
+        "Calculates the interest difference as $60 - $40 = $20."
+      ]
+    },
+    {
+      "id": "finance-15",
+      "category": "repeated",
+      "short_prompt": false,
+      "expected_replacements": 5,
+      "text": "Policy labels credit risk low for default probability below 1%, credit risk medium from 1% through 3%, and credit risk high above 3%. Assign credit risk labels to borrowers A at 0.5%, B at 2%, and C at 4%. State which borrower has the highest credit risk.",
+      "expected_points": [
+        "Labels A low, B medium, and C high under the supplied policy.",
+        "Identifies C as the highest-risk borrower."
+      ]
+    },
+    {
+      "id": "finance-16",
+      "category": "mixed",
+      "short_prompt": false,
+      "expected_replacements": 6,
+      "text": "Instrument A has implied volatility of 40% and implied volatility rank of 20. Instrument B has implied volatility of 25% and implied volatility rank of 80. Which has the higher implied volatility, and which has the higher implied volatility rank? Explain why these rankings need not agree.",
+      "expected_points": [
+        "Identifies A as having the higher absolute implied volatility.",
+        "Identifies B as having the higher implied volatility rank.",
+        "Explains that rank reflects the position within each instrument's own historical range, so the two comparisons need not agree."
+      ]
+    },
+    {
+      "id": "finance-17",
+      "category": "mixed",
+      "short_prompt": false,
+      "expected_replacements": 2,
+      "text": "The terms 'interest rates' and 'credit risks' are plural labels. Quote both labels unchanged, then define interest rate and credit risk in one sentence each.",
+      "expected_points": [
+        "Preserves the quoted plural labels 'interest rates' and 'credit risks'.",
+        "Defines interest rate as the charge or return expressed as a percentage of principal over a stated period.",
+        "Defines credit risk as potential loss from failure to meet borrower or counterparty obligations."
+      ]
+    },
+    {
+      "id": "finance-18",
+      "category": "mixed",
+      "short_prompt": false,
+      "expected_replacements": 3,
+      "text": "A record shows IMPLIED   VOLATILITY of 25%, implied volatility\nrank of 60, and days\tto expiration of 12. Return those three values in that order, with their full labels.",
+      "expected_points": [
+        "Reports implied volatility as 25%.",
+        "Reports implied volatility rank as 60, not 60% implied volatility.",
+        "Reports days to expiration as 12 and preserves the requested value order."
+      ]
+    },
+    {
+      "id": "finance-19",
+      "category": "mixed",
+      "short_prompt": false,
+      "expected_replacements": 5,
+      "text": "A worksheet lists implied volatility as 25%, implied volatility rank as 70, days to expiration as 14, interest rate as 4%, and credit risk as low. Report the entries exactly, then state whether these entries alone prove that buying the contract is profitable.",
+      "expected_points": [
+        "Preserves all five label-value pairs: 25%, 70, 14, 4%, and low, respectively.",
+        "States that the entries alone do not prove profitability and does not invent an expected return or trade recommendation."
+      ]
+    },
+    {
+      "id": "finance-20",
+      "category": "mixed",
+      "short_prompt": false,
+      "expected_replacements": 2,
+      "text": "Compute implied volatility rank using 100 * (current - minimum) / (maximum - minimum) with current 25%, minimum 25%, and maximum 25%. If implied volatility rank is undefined under this formula, explain why rather than substituting an arbitrary value.",
+      "expected_points": [
+        "Identifies that maximum minus minimum is zero, so the supplied formula is undefined.",
+        "Does not substitute an arbitrary rank such as 0, 50, or 100."
+      ]
+    }
+  ]
+}
